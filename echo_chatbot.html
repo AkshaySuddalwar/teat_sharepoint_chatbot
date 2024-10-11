@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #chatbox {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #messages {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        #userInput {
+            width: calc(100% - 22px);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="chatbox">
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const message = inputField.value;
+
+        if (message.trim() === "") return;
+
+        const messagesDiv = document.getElementById('messages');
+        
+        // Display user message
+        messagesDiv.innerHTML += `<div><strong>You:</strong> ${message}</div>`;
+        
+        // Echo back the message
+        messagesDiv.innerHTML += `<div><strong>Bot:</strong> ${message}</div>`;
+        
+        // Clear the input field
+        inputField.value = '';
+        
+        // Scroll to the bottom of the messages
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
