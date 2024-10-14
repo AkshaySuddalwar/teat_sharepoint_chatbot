@@ -39,7 +39,7 @@
 
 <div id="chatbox">
     <div id="messages"></div>
-    <input type="text" id="userInput" placeholder="Type a message..." />
+    <input type="text" id="userInput" placeholder="Type a message..." onkeypress="checkEnter(event)" />
     <button onclick="sendMessage()">Send</button>
 </div>
 
@@ -64,6 +64,12 @@
         // Scroll to the bottom of the messages
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
+    function checkEnter(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+    
 </script>
 
 </body>
